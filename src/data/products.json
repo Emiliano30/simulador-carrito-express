@@ -1,0 +1,44 @@
+[
+  {
+    "id": "663056ca-ee0d-400f-9cc9-18433c923888",
+    "title": "Camiseta de algodón",
+    "description": "Camiseta de algodón suave y cómoda, perfecta para el uso diario.",
+    "code": "CAM001",
+    "price": 19.99,
+    "status": true,
+    "stock": 100,
+    "category": "Ropa",
+    "thumbnails": [
+      "/images/camiseta1.jpg",
+      "/images/camiseta2.jpg"
+    ]
+  },
+  {
+    "id": "1100ce6e-f6ff-4c14-95a6-0351f19464ee",
+    "title": "Pantalones vaqueros",
+    "description": "Pantalones vaqueros de alta calidad con un ajuste moderno.",
+    "code": "PAN001",
+    "price": 49.99,
+    "status": true,
+    "stock": 50,
+    "category": "Ropa",
+    "thumbnails": [
+      "/images/pantalones1.jpg",
+      "/images/pantalones2.jpg"
+    ]
+  },
+  {
+    "id": "5589ce6e-f6ff-4c14-95a6-0351f19464ee",
+    "title": "Zapatillas deportivas",
+    "description": "Zapatillas deportivas ligeras y cómodas, ideales para correr y entrenar.",
+    "code": "ZAP001",
+    "price": 79.99,
+    "status": true,
+    "stock": 30,
+    "category": "Calzado",
+    "thumbnails": [
+      "/images/zapatillas1.jpg",
+      "/images/zapatillas2.jpg"
+    ]
+  }
+]
