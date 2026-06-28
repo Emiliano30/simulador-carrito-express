@@ -1,12 +1,12 @@
 const fs = require('fs/promises');
 const path = require('path');
-const {configPath} = require('../config/config-app');
+const {paths} = require('../config/config-app');
 const {v4: uuidv4} = require('uuid');
 const {productManager} = require('./ProductManager');
 
 class CartManager {
     constructor(){
-        this.carts = path.join(configPath, 'carts.json');
+        this.carts = path.join(paths.configPath, 'carts.json');
     }
 
     async getCarts(){

@@ -1,11 +1,11 @@
 const fs = require('fs/promises');
 const path = require('path');
-const {configPath} = require('../config/config-app');
+const {paths} = require('../config/config-app');
 const {v4: uuidv4} = require('uuid');
 
 class ProductManager {
     constructor() {
-        this.products = path.join(configPath, 'products.json');
+        this.products = path.join(paths.configPath, 'products.json');
     }
 
     async getProducts() {

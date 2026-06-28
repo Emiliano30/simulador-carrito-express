@@ -1,0 +1,78 @@
+
+<div>
+    {{> header}}
+    {{#if error}}
+    <div class="alert-error-container">
+        <p class="alert-error-text">⚠️ {{error}}</p>
+    </div>
+    {{/if}}
+    <h1>Version peticion http</h1>
+    <div class="container-form"> <h2>Agregar producto con http</h2>
+        <form id="singleForm" action="/add-product" method="post" enctype="multipart/form-data"> 
+            <input type="text" id="title" name="title" placeholder="Nombre" required> 
+
+            <input type="text" id="description" name="description" placeholder="Descripción" required> 
+
+            <input type="text" id="code" name="code" placeholder="Código" required> 
+
+            <input type="number" id="price" name="price" step="0.01" placeholder="Precio" required> 
+
+            <input type="number" id="stock" name="stock" placeholder="Stock" required> 
+
+            <input type="text" id="category" name="category" placeholder="Categoría" required> 
+
+            <label for="singleImage">Selecciona una imagen</label> 
+            <input type="file" id="singleImage" name="thumbnail" accept="image/*" required> 
+            
+            <button type="submit">Agregar Producto</button> 
+        </form>
+    </div>
+
+    <div class="products-grid">
+        {{#each products}} 
+        {{#if status}} 
+            <div class="product-card" id="product-{{id}}"> 
+                
+                <div class="view-mode">
+                    <h1>{{title}}</h1> 
+                    <h2>{{description}}</h2> 
+                    <h3>Precio: ${{price}}</h3> 
+                    <p>Stock: {{stock}}</p> 
+                    
+                    <div class="product-images">
+                        {{#each thumbnails}} 
+                            <img src="{{this}}" alt="{{../title}}" /> 
+                        {{/each}} 
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" class="delete-button btn-delete-static" data-id="{{id}}">Eliminar</button>
+
+                        <button type="button" class="btn-enable-edit-static">Actualizar</button> 
+                    </div>
+                </div>
+
+                <div class="edit-mode">
+                    <h2>Editar Producto</h2>
+                    
+                    <form action="/update-product/{{id}}" method="POST"> 
+                        <label>Precio:</label> 
+                        <input type="number" name="price" value="{{price}}" step="0.01" required>
+
+                        <label>Stock:</label> 
+                        <input type="number" name="stock" value="{{stock}}" required> 
+
+                        <div class="actions">
+                            <button type="submit" class="save-button">Guardar Cambios</button> 
+                            <button type="button" class="btn-cancel-edit-static">Cancelar</button> 
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        {{/if}}
+        {{/each}} 
+    </div>
+
+    <script src="/public/script/index-static.js"></script> 
+</div>

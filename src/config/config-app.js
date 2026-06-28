@@ -1,7 +1,14 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const configPath = path.join(__dirname, '../','data');
 
-module.exports = {configPath};
+
+const paths = {
+    configPath:path.join(__dirname, '../','data'),
+    pathPublic:path.join(__dirname, '../../', 'public'),
+    pathViews:path.join(__dirname, '../', 'views'),
+    pathUpload:path.join(__dirname, '../../', 'uploads')
+}
+
+module.exports = {paths};
 

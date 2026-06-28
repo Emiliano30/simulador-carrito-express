@@ -1,0 +1,54 @@
+<div>
+    {{> header }}
+    <h1>Version {{version}}</h1>
+    <div class="productContainer">
+        <div class="live-form">
+            <h2>Agregar producto en vivo</h2>
+            <form id="liveProductForm">
+                <input type="text" id="title" placeholder="Nombre" required>
+                <input type="text" id="description" placeholder="Descripción" required>
+                <input type="text" id="code" placeholder="Código" required>
+                <input type="number" id="price" placeholder="Precio" step="0.01" required>
+                <input type="number" id="stock" placeholder="Stock" required>
+                <input type="text" id="category" placeholder="Categoría" required>
+                <label for="thumbnail">Imagen</label>
+                <input type="file" id="thumbnail" accept="image/*" required>
+                <button type="submit">Agregar producto</button>
+            </form>
+        </div>
+        <div class="productCard"></div>
+    </div>
+    <template id="product-template">
+        <div class="product">
+            <div class="view-mode">
+                <h3 class="p-title"></h3>
+                <p>Precio: $<strong class="p-price"></strong></p>
+                <p>Stock: <strong class="p-stock"></strong></p>
+                <p>Categoría: <span class="p-category"></span></p>
+                <img class="p-img" src="" alt="" />
+    
+                <div class="actions">
+                    <button class="btn-delete">Eliminar</button>
+                    <button class="btn-enable-edit">Editar</button>
+                </div>
+            </div>
+    
+            <div class="edit-mode">
+                <h3>Editar Producto</h3>
+                <label>Precio:</label>
+                <input type="number" class="edit-price" step="0.01">
+    
+                <label>Stock:</label>
+                <input type="number" class="edit-stock">
+    
+                <div class="actions">
+                    <button class="btn-save-edit">Guardar</button>
+                    <button class="btn-cancel-edit">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/script/index-live.js"></script>
+</div>

@@ -4,13 +4,13 @@
     "title": "Camiseta de algodón",
     "description": "Camiseta de algodón suave y cómoda, perfecta para el uso diario.",
     "code": "CAM001",
-    "price": 19.99,
+    "price": 50000,
     "status": true,
     "stock": 100,
     "category": "Ropa",
     "thumbnails": [
-      "/images/camiseta1.jpg",
-      "/images/camiseta2.jpg"
+      "/uploads/OIP.jpg",
+      "/uploads/OIP (1).jpg"
     ]
   },
   {
@@ -18,13 +18,13 @@
     "title": "Pantalones vaqueros",
     "description": "Pantalones vaqueros de alta calidad con un ajuste moderno.",
     "code": "PAN001",
-    "price": 49.99,
+    "price": 2200,
     "status": true,
-    "stock": 50,
+    "stock": 20,
     "category": "Ropa",
     "thumbnails": [
-      "/images/pantalones1.jpg",
-      "/images/pantalones2.jpg"
+      "/uploads/OIP (2).jpg",
+      "/uploads/OIP (3).jpg"
     ]
   },
   {
@@ -37,8 +37,8 @@
     "stock": 30,
     "category": "Calzado",
     "thumbnails": [
-      "/images/zapatillas1.jpg",
-      "/images/zapatillas2.jpg"
+      "/uploads/OIP (4).jpg",
+      "/uploads/OIP (5).jpg"
     ]
   }
 ]
