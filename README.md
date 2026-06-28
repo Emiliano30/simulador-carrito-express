@@ -11,7 +11,7 @@
 
 <p align="center">
 
-Aplicación web desarrollada con **Node.js**, **Express** y **Socket.IO** para la gestión de productos y carritos de un gimnasio.
+Aplicación web desarrollada con **Node.js**, **Express** y **Socket.IO** para la gestión de productos y carritos de un E-commerce.
 
 El proyecto combina una **API REST**, una **interfaz web tradicional renderizada con Handlebars** y una **versión en tiempo real mediante WebSockets**, aplicando una arquitectura modular basada en el patrón **MVC** y buenas prácticas de desarrollo Backend.
 
@@ -31,7 +31,7 @@ El proyecto combina una **API REST**, una **interfaz web tradicional renderizada
 
 # 📖 Descripción
 
-**E-commerce Lab** es un proyecto desarrollado durante la cursada de **Backend I**, cuya finalidad es implementar una plataforma para la administración de productos y carritos de compra pertenecientes a un gimnasio.
+**E-commerce Lab** es un proyecto desarrollado durante la cursada de **Backend I**, cuya finalidad es implementar una plataforma para la administración de productos y carritos de compra pertenecientes a un E-commerce.
 
 Durante su evolución, el proyecto pasó de ser una API REST sencilla con persistencia mediante archivos JSON a una aplicación mucho más completa, incorporando renderizado del lado del servidor, comunicación en tiempo real y una arquitectura desacoplada.
 
