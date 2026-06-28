@@ -15,7 +15,7 @@ router.post('/update-product/:id', validateId('id'), validateUpdateProduct, upda
 
 //version socket.io
 
-router.get('/live', (req,res) => {
+router.get('/realtimeproducts', (req,res) => {
     res.render('pages/realTimeProducts',{version:'Socket.io'});
 })
 
