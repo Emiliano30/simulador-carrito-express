@@ -1,13 +1,15 @@
+const mongoose = require('mongoose');
 
 const validateId = (paramName) => {
     return (req, res, next) => {
+
         const id = req.params[paramName];
 
-        const uuidRegex =
-            /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-        if (!id || !uuidRegex.test(id)) {
-            return res.redirect('/?error='+encodeURIComponent(`El identificador (${paramName}) no es valido`))
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                status: "error",
+                message: `El identificador (${paramName}) no es válido`
+            });
         }
 
         next();

@@ -4,6 +4,7 @@ const {validateId} = require('../middlewares/middleware');
 
 const router = new Router();
 
+
 router.post('/carts', addCart);
 
 router.get('/carts/:id', validateId('id'), getCartById);

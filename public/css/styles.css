@@ -334,3 +334,24 @@ button, .actions button {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+select{
+    background: #1A0033;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all .3s ease;
+}
+
+select:focus{
+    outline:none;
+    border-color:#00E5FF;
+    box-shadow:0 0 8px rgba(0,229,255,.6);
+}
+
+.actions .nav-link{
+    flex:1;
+    text-align:center;
+}

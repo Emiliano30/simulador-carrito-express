@@ -87,8 +87,8 @@ socket.on('productsList', (products) => {
     clone.querySelector('.edit-stock').value = p.stock;
 
 
-    clone.querySelector('.btn-delete').setAttribute('data-id', p.id);
-    clone.querySelector('.btn-save-edit').setAttribute('data-id', p.id);
+    clone.querySelector('.btn-delete').setAttribute('data-id', p._id);
+    clone.querySelector('.btn-save-edit').setAttribute('data-id', p._id);
 
 
     productCard.appendChild(clone);
@@ -139,7 +139,7 @@ productCard.addEventListener('click', (e) => {
 
   if (e.target.classList.contains('btn-delete')) {
     const productId = e.target.getAttribute('data-id');
-
+    
     Swal.fire({
       title: '¿Estás seguro?',
       text: "¡Esta acción no se puede revertir!",

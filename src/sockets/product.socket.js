@@ -9,7 +9,7 @@ module.exports = function setupProductSocket(io) {
     socket.on('getProducts', async () => {
       try {
         const products = await productManager.getProducts();
-        socket.emit('productsList', products);
+        socket.emit('productsList', products.docs);
       } catch (error) {
         console.error('Error al obtener productos:', error);
         socket.emit('error', { message: error.message });

@@ -1,11 +1,46 @@
 const {productManager} = require('../managers/ProductManager');
+const { buildPaginationLinks } = require('../utils/paginationLinks');
 
 
 
 async function getProducts(req, res) {
     try {
-        const products = await productManager.getProducts();
-        res.status(200).json(products);
+        const {limit,page,query,sort} = req.query;
+        const products = await productManager.getProducts(
+            limit,
+            page,
+            query,
+            sort
+        );
+
+
+        const {prevLink,nextLink} = buildPaginationLinks(
+            '/api/products',
+            products,
+            req.query
+        );
+
+        res.status(200).json({
+            status: "success",
+
+            payload: products.docs,
+
+            totalPages: products.totalPages,
+
+            prevPage: products.prevPage,
+
+            nextPage: products.nextPage,
+
+            page: products.page,
+
+            hasPrevPage: products.hasPrevPage,
+
+            hasNextPage: products.hasNextPage,
+
+            prevLink,
+
+            nextLink
+        });
 
     } catch (error) {
         console.error('Error al obtener los productos:', error);

@@ -66,7 +66,7 @@ async function createProductFromSocket(productData) {
 async function notifyProductsUpdate() {
   const updatedProducts = await productManager.getProducts();
   try {
-    getIO().emit('productsList', updatedProducts);
+    getIO().emit('productsList', updatedProducts.docs);
   } catch (error) {
     console.error('No se pudo emitir productsList:', error.message);
   }

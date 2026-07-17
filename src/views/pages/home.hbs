@@ -29,9 +29,9 @@
     </div>
 
     <div class="products-grid">
-        {{#each products}} 
+        {{#each products.docs}} 
         {{#if status}} 
-            <div class="product-card" id="product-{{id}}"> 
+            <div class="product-card" id="product-{{_id}}"> 
                 
                 <div class="view-mode">
                     <h1>{{title}}</h1> 
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="actions">
-                        <button type="button" class="delete-button btn-delete-static" data-id="{{id}}">Eliminar</button>
+                        <button type="button" class="delete-button btn-delete-static" data-id="{{_id}}">Eliminar</button>
 
                         <button type="button" class="btn-enable-edit-static">Actualizar</button> 
                     </div>
@@ -55,7 +55,7 @@
                 <div class="edit-mode">
                     <h2>Editar Producto</h2>
                     
-                    <form action="/update-product/{{id}}" method="POST"> 
+                    <form action="/update-product/{{_id}}" method="POST"> 
                         <label>Precio:</label> 
                         <input type="number" name="price" value="{{price}}" step="0.01" required>
 

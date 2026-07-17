@@ -1,100 +1,76 @@
-const fs = require('fs/promises');
-const path = require('path');
-const {paths} = require('../config/config-app');
-const {v4: uuidv4} = require('uuid');
+const ProductModel = require('../models/Product.model')
 
 class ProductManager {
-    constructor() {
-        this.products = path.join(paths.configPath, 'products.json');
-    }
+    
+    async getProducts(limit = 10, page = 1, category,status, sort) {
+        const filter = {};
 
-    async getProducts() {
-        try {
-            const data = await fs.readFile(this.products, 'utf-8');
-            return JSON.parse(data);
-        } catch (error) {
-            console.error('Error al leer el archivo de productos:', error);
-            if (error.code === 'ENOENT') {
-                await fs.writeFile(this.products, JSON.stringify([], null, 2));
-                return [];
-            }
-            throw error;
+        if(category){
+            const normalizeCategory = category.trim()
+            filter.category = {
+                    $regex: `^${normalizeCategory}$`,
+                    $options: 'i'
+                }
         }
+
+        if(status === 'false' || status === 'true'){
+            filter.status = status === 'true';
+        }
+
+        const options = {
+            limit:parseInt(limit),
+            page:parseInt(page),
+            lean:true
+        }
+
+        if(sort){
+            options.sort = {
+                price: sort === 'asc'? 1:-1
+            }
+        }
+
+        const result = await ProductModel.paginate(filter,options)
+        return result;
     }
 
     async getProductById(id) {
-        try {
-            const products = await this.getProducts();
+        const product = await ProductModel.findById(id)
 
-            const product = products.find(product => product.id === id);
-            if (!product) {
-                throw new Error('Producto no encontrado');
-            }
-
-            return product;
-        } catch (error) {
-            console.error('Error al obtener el producto por ID:', error);
-            throw error;
+        if (!product) {
+            throw new Error('Producto no encontrado');
         }
+        return product;
     }
 
     async addProduct(product){
-        try{
-            const products = await this.getProducts();
-
-            const newProduct = {
-                id: uuidv4(),
-                status: true,
-                ...product
-            };
-
-            products.push(newProduct);
-
-            await fs.writeFile(this.products, JSON.stringify(products, null, 2));
-            return newProduct;
-        } catch (error) {
-            console.error('Error al agregar el producto:', error);
-            throw error;
-        }
+        return await ProductModel.create(product)
     }
 
     async updateProduct(id, updatedFields) {
-        try {
-            const products = await this.getProducts();
-            const productIndex = products.findIndex(product => product.id === id);
 
-            if (productIndex === -1) {
-                throw new Error('Producto no encontrado');
+        const updatedProduct = await ProductModel.findByIdAndUpdate(
+            id,
+            updatedFields,
+            {
+                new:true,
+                runValidators:true
             }
+        )
 
-            const updatedProduct = { ...products[productIndex], ...updatedFields, id:products[productIndex].id };
-            products[productIndex] = updatedProduct;
-
-            await fs.writeFile(this.products, JSON.stringify(products, null, 2));
-            return updatedProduct;
-        } catch (error) {
-            console.error('Error al actualizar el producto:', error);
-            throw error;
+        if(!updatedProduct){
+            throw new Error("Producto no encontrado")
         }
+
+        return updatedProduct
     }
 
     async deleteProduct(id) {
-        try {
-            const products = await this.getProducts();
-            const productIndex = products.findIndex(product => product.id === id);
+        const deletedProduct = await ProductModel.findByIdAndDelete(id);
 
-            if (productIndex === -1) {
-                throw new Error('Producto no encontrado');
-            }
-
-            const deletedProduct = products.splice(productIndex, 1)[0];
-            
-            await fs.writeFile(this.products, JSON.stringify(products, null, 2));
-            return deletedProduct;
-        } catch (error) {
-            console.error('Error al eliminar el producto:', error);
-            throw error;
+        if(!deletedProduct){
+            throw new Error("Producto no encontrado")
         }
+        return deletedProduct
     }
 }
 

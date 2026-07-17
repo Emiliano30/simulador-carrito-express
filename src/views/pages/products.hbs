@@ -1,0 +1,140 @@
+<div class="container">
+
+    <h1>Catálogo de Productos</h1>
+    <h2>Explora nuestro catálogo utilizando los filtros disponibles.</h2>
+
+    <div class="container-form">
+
+        <form action="/products" method="GET">
+
+            <label for="category">Categoría</label>
+            <input
+                id="category"
+                type="text"
+                name="category"
+                placeholder="Ej: Ropa"
+                value="{{category}}"
+            >
+
+            <label for="status">Estado</label>
+            <select id="status" name="status">
+
+                <option value="">Todos</option>
+
+                <option value="true" {{selected status "true"}}>
+                    Activos
+                </option>
+
+                <option value="false" {{selected status "false"}}>
+                    Inactivos
+                </option>
+
+            </select>
+
+            <label for="sort">Orden por precio</label>
+            <select id="sort" name="sort">
+
+                <option value="">Sin ordenar</option>
+
+                <option value="asc" {{selected sort "asc"}}>
+                    Menor precio
+                </option>
+
+                <option value="desc" {{selected sort "desc"}}>
+                    Mayor precio
+                </option>
+
+            </select>
+
+            <label for="limit">Productos por página</label>
+            <select id="limit" name="limit">
+
+                <option value="5" {{selected limit "5"}}>5</option>
+                <option value="10" {{selected limit "10"}}>10</option>
+                <option value="20" {{selected limit "20"}}>20</option>
+
+            </select>
+
+            <button type="submit">
+                Aplicar filtros
+            </button>
+
+        </form>
+
+    </div>
+
+    {{#if products.length}}
+
+        <div class="products-grid">
+
+            {{#each products}}
+
+                <article class="product-card">
+
+                    <img
+                        src="{{this.thumbnails.[0]}}"
+                        alt="{{this.title}}"
+                    >
+
+                    <h3>{{this.title}}</h3>
+
+                    <p>
+                        <strong>Categoría:</strong>
+                        {{this.category}}
+                    </p>
+
+                    <p>
+                        <strong>Precio:</strong>
+                        $ {{this.price}}
+                    </p>
+
+                    <p>
+                        <strong>Stock:</strong>
+                        {{this.stock}}
+                    </p>
+
+                    <div class="actions">
+
+                        <a class="nav-link" href="/products/{{this._id}}">
+                            Ver detalle
+                        </a>
+
+                    </div>
+
+                </article>
+
+            {{/each}}
+
+        </div>
+
+    {{else}}
+
+        <div class="alert-error-container">
+            <p class="alert-error-text">
+                No se encontraron productos con esos filtros.
+            </p>
+        </div>
+
+    {{/if}}
+
+    <div class="navigation-menu">
+
+        {{#if hasPrevPage}}
+            <a class="nav-link" href="{{prevLink}}">
+                ← Anterior
+            </a>
+        {{/if}}
+
+        <span class="nav-link">
+            Página {{page}} de {{totalPages}}
+        </span>
+
+        {{#if hasNextPage}}
+            <a class="nav-link" href="{{nextLink}}">
+                Siguiente →
+            </a>
+        {{/if}}
+
+    </div>
+
+</div>
