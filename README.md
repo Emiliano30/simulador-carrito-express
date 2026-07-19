@@ -1,276 +1,203 @@
-# 🏋️ E-commerce Lab
 
-![Socket.IO](https://img.shields.io/badge/Socket.IO-010101?logo=socketdotio)
-![Handlebars](https://img.shields.io/badge/Handlebars-f0772b?logo=handlebarsdotjs)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Multer](https://img.shields.io/badge/Multer-4CAF50)
-![Morgan](https://img.shields.io/badge/Morgan-795548)
-![UUID](https://img.shields.io/badge/UUID-1565C0)
-![MVC](https://img.shields.io/badge/Architecture-MVC-blue)
+# 🛒 E-commerce Backend
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge)
+![Handlebars](https://img.shields.io/badge/Handlebars-f0772b?style=for-the-badge&logo=handlebarsdotjs&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socketdotio&logoColor=white)
+![Multer](https://img.shields.io/badge/Multer-FF6F00?style=for-the-badge)
+![Cookie Parser](https://img.shields.io/badge/Cookie--Parser-4CAF50?style=for-the-badge)
+![dotenv](https://img.shields.io/badge/dotenv-ECD53F?style=for-the-badge)
 
-<p align="center">
+## 📌 Descripción
 
-Aplicación web desarrollada con **Node.js**, **Express** y **Socket.IO** para la gestión de productos y carritos de un E-commerce.
+Este proyecto corresponde a un **E-commerce Backend** desarrollado con **Node.js** y **Express.js**, como parte del curso de Backend.
 
-El proyecto combina una **API REST**, una **interfaz web tradicional renderizada con Handlebars** y una **versión en tiempo real mediante WebSockets**, aplicando una arquitectura modular basada en el patrón **MVC** y buenas prácticas de desarrollo Backend.
+La aplicación implementa una arquitectura modular siguiendo buenas prácticas de desarrollo, permitiendo administrar productos y carritos de compra mediante una API REST, además de incorporar vistas dinámicas con **Handlebars** para la interacción del usuario.
 
-</p>
-
----
-
-# 📚 Índice
-
-- [📖 Descripción](#-descripción)
-- [✨ Características principales](#-características-principales)
-- [🛠️ Tecnologías utilizadas](#️-tecnologías-utilizadas)
-- [🏛️ Arquitectura del proyecto](#️-arquitectura-del-proyecto)
-- [📂 Estructura del proyecto](#-estructura-del-proyecto)
+La persistencia de los datos se realiza mediante **MongoDB Atlas** utilizando **Mongoose**, reemplazando la persistencia inicial basada en archivos JSON para ofrecer una solución más escalable y cercana a un entorno de producción.
 
 ---
 
-# 📖 Descripción
+# 🚀 Características principales
 
-**E-commerce Lab** es un proyecto desarrollado durante la cursada de **Backend I**, cuya finalidad es implementar una plataforma para la administración de productos y carritos de compra pertenecientes a un E-commerce.
-
-Durante su evolución, el proyecto pasó de ser una API REST sencilla con persistencia mediante archivos JSON a una aplicación mucho más completa, incorporando renderizado del lado del servidor, comunicación en tiempo real y una arquitectura desacoplada.
-
-Actualmente el sistema integra dos formas distintas de interactuar con la aplicación:
-
-## 🖥️ Versión HTTP Tradicional
-
-Implementada mediante **Express + Handlebars**, permite administrar los productos utilizando formularios tradicionales renderizados desde el servidor.
-
-Incluye:
-
-- Alta de productos
-- Edición de productos
-- Eliminación de productos
-- Carga de imágenes mediante Multer
-- Validaciones mediante Middlewares
-- Alertas visuales con SweetAlert2
-
----
-
-## ⚡ Versión Live (WebSockets)
-
-Implementada mediante **Socket.IO**, permite administrar exactamente los mismos productos pero con actualización automática en tiempo real.
-
-Las modificaciones realizadas por cualquier usuario conectado se reflejan instantáneamente en todos los clientes sin necesidad de recargar la página.
-
-Incluye:
-
-- Alta de productos en tiempo real
-- Actualización instantánea
-- Eliminación instantánea
-- Sincronización automática entre clientes
-- Comunicación bidireccional Cliente ↔ Servidor
+* ✅ Arquitectura modular y escalable.
+* ✅ API REST para Productos y Carritos.
+* ✅ Persistencia con MongoDB Atlas y Mongoose.
+* ✅ Paginación de productos.
+* ✅ Filtros por categoría.
+* ✅ Filtro por estado del producto.
+* ✅ Ordenamiento por precio.
+* ✅ Límite de productos por página.
+* ✅ Vistas dinámicas con Handlebars.
+* ✅ Vista de detalle de producto.
+* ✅ Carrito persistente mediante Cookies.
+* ✅ Agregar productos al carrito.
+* ✅ Eliminar productos individuales del carrito.
+* ✅ Vaciar completamente el carrito.
+* ✅ Actualización en tiempo real mediante Socket.io.
+* ✅ Carga de imágenes utilizando Multer.
+* ✅ Variables de entorno con dotenv.
 
 ---
 
-# ✨ Características principales
+# 🛠 Tecnologías utilizadas
 
-## 🚀 Backend
+### Backend
 
-- Arquitectura MVC
-- API REST completamente funcional
-- Organización modular del proyecto
-- Separación de responsabilidades
-- Persistencia mediante archivos JSON
-- Identificadores únicos mediante UUID
-- Middlewares personalizados
-- Servicios desacoplados mediante capa Service
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* mongoose-paginate-v2
 
----
+### Motor de vistas
 
-## 🌐 Frontend
+* Express Handlebars
 
-- Renderizado del lado del servidor (SSR)
-- Plantillas dinámicas con Handlebars
-- CSS personalizado con estética Cyber Fitness
-- Navegación entre vistas
-- Interfaz responsive
-- Delegación de eventos mediante JavaScript
+### Comunicación en tiempo real
 
----
+* Socket.io
 
-## ⚡ Tiempo Real
+### Gestión de archivos
 
-- Socket.IO
-- Actualización automática
-- Sin recargar la página
-- Comunicación Cliente ↔ Servidor
-- Sincronización inmediata de productos
+* Multer
+
+### Middlewares
+
+* Morgan
+* CORS
+* Cookie Parser
+* Dotenv
 
 ---
 
-## 🛡️ Validaciones
+# 📁 Arquitectura del proyecto
 
-El proyecto implementa distintas capas de validación para garantizar la integridad de los datos.
-
-Entre ellas:
-
-- Validación de UUID
-- Validación de precio
-- Validación de stock
-- Validación de datos requeridos
-- Manejo de errores mediante Middlewares
-- Redirección controlada hacia la vista principal
-- Mensajes de error amigables para el usuario
-
----
-
-## 🎨 Interfaz
-
-La aplicación utiliza una identidad visual inspirada en una estética **Cyber Fitness / Neon**, utilizando una combinación de colores violetas, fucsias y cyan para ofrecer una experiencia visual moderna.
-
-La interfaz incorpora:
-
-- SweetAlert2
-- Formularios estilizados
-- Navbar compartido
-- Tarjetas de productos
-- Formularios de edición
-- Confirmaciones visuales
-- Alertas personalizadas
-
----
-
-# 🛠️ Tecnologías utilizadas
-
-| Categoría | Tecnologías |
-|-----------|-------------|
-| **Lenguaje** | JavaScript (ES6+) |
-| **Runtime** | Node.js |
-| **Framework** | Express.js |
-| **Motor de plantillas** | Express Handlebars |
-| **Tiempo real** | Socket.IO |
-| **Carga de archivos** | Multer |
-| **Persistencia** | FileSystem (`fs/promises`) |
-| **Identificadores** | UUID |
-| **Logs** | Morgan |
-| **Frontend** | HTML5 · CSS3 · JavaScript |
-| **Alertas** | SweetAlert2 |
-
----
-
-# 🏛️ Arquitectura del proyecto
-
-El proyecto sigue una arquitectura basada en el patrón **MVC (Model - View - Controller)**, permitiendo separar correctamente cada responsabilidad dentro de la aplicación.
+El proyecto está organizado siguiendo una estructura modular que separa responsabilidades para facilitar el mantenimiento y la escalabilidad.
 
 ```text
-                  Cliente
-                     │
-                     ▼
-                Express Router
-                     │
-                     ▼
-               Middlewares
-                     │
-                     ▼
-               Controllers
-                     │
-          ┌──────────┴──────────┐
-          ▼                     ▼
-      Services              Views (.hbs)
-          │
-          ▼
-      Managers
-          │
-          ▼
- Persistencia (JSON)
+src
+│
+├── config/
+│   ├── db.js
+│   ├── multer.js
+│   ├── socket.io.js
+│   ├── hbs.config.js
+│   ├── cors.config.js
+│   └── config-app.js
+│
+├── controllers/
+│   ├── product.controller.js
+│   ├── cart.controller.js
+│   └── view.controller.js
+│
+├── managers/
+│   ├── ProductManager.js
+│   └── CartManager.js
+│
+├── middlewares/
+│
+├── models/
+│   ├── Product.model.js
+│   └── Cart.model.js
+│
+├── routes/
+│   ├── product.routes.js
+│   ├── cart.routes.js
+│   ├── view.routes.js
+│   └── index.routes.js
+│
+├── scripts/
+│   └── seedProducts.js
+│
+├── services/
+│
+├── sockets/
+│   └── product.socket.js
+│
+├── utils/
+│
+├── views/
+│   ├── layouts/
+│   ├── pages/
+│   └── partials/
+│
+├── public/
+│
+├── uploads/
+│
+└── app.js
 ```
 
-Esta organización facilita:
+---
 
-- Escalabilidad
-- Reutilización del código
-- Mantenimiento
-- Separación de responsabilidades
-- Fácil incorporación de nuevas funcionalidades
+# 🎯 Funcionalidades implementadas
+
+## Gestión de Productos
+
+* Obtener listado completo de productos.
+* Obtener un producto por ID.
+* Crear nuevos productos.
+* Actualizar productos existentes.
+* Eliminar productos.
+* Subida de imágenes mediante Multer.
+
+## Gestión de Carritos
+
+* Crear un carrito automáticamente al agregar el primer producto.
+* Agregar productos al carrito.
+* Incrementar la cantidad cuando un producto ya existe.
+* Visualizar el contenido del carrito.
+* Eliminar productos individuales.
+* Vaciar completamente el carrito.
+
+## Catálogo de Productos
+
+* Listado paginado.
+* Búsqueda por categoría.
+* Filtrado por estado.
+* Ordenamiento ascendente y descendente por precio.
+* Selección de cantidad de productos por página.
+* Navegación entre páginas conservando los filtros seleccionados.
+
+## Vistas
+
+* Home.
+* RealTimeProducts.
+* Catálogo de Productos.
+* Detalle de Producto.
+* Carrito de Compras.
 
 ---
 
-# 📂 Estructura del proyecto
+# 💡 Principales decisiones de diseño
 
-```text
-📦 E-commerce Lab
-│
-├── 📂 public
-│   ├── css/
-│   ├── img/
-│   └── script/
-│
-├── 📂 src
-│   ├── 📂 config
-│   ├── 📂 controllers
-│   ├── 📂 data
-│   ├── 📂 managers
-│   ├── 📂 middlewares
-│   ├── 📂 routes
-│   ├── 📂 services
-│   ├── 📂 sockets
-│   ├── 📂 utils
-│   ├── 📂 views
-│   └── 📄 app.js
-│
-├── 📂 uploads
-│
-├── 📄 package.json
-├── 📄 package-lock.json
-├── 📄 .gitignore
-└── 📄 README.md
-```
+Durante el desarrollo se priorizó una arquitectura desacoplada separando la lógica de negocio, el acceso a datos, las rutas y las vistas.
 
-## Descripción de cada carpeta
+Además, se implementó una capa de servicios para encapsular procesos específicos y facilitar futuras ampliaciones del sistema.
 
-| Carpeta | Función |
-|----------|---------|
-| **config/** | Configuración general de la aplicación (Handlebars, Socket.IO, Multer, etc.) |
-| **controllers/** | Reciben las peticiones HTTP y coordinan la lógica de negocio. |
-| **data/** | Archivos JSON utilizados como persistencia local. |
-| **managers/** | Encargados de interactuar directamente con los archivos JSON. |
-| **middlewares/** | Validaciones y control de errores antes de llegar al controlador. |
-| **routes/** | Definición de todos los endpoints de la aplicación. |
-| **services/** | Capa intermedia encargada de desacoplar la lógica entre controladores y managers. |
-| **sockets/** | Eventos y comunicación mediante Socket.IO. |
-| **utils/** | Funciones auxiliares reutilizables. |
-| **views/** | Plantillas Handlebars y componentes reutilizables. |
-| **public/** | Recursos públicos (CSS, imágenes y JavaScript del cliente). |
-| **uploads/** | Almacenamiento físico de las imágenes subidas por el usuario. |
+La persistencia fue migrada desde archivos JSON hacia MongoDB Atlas utilizando Mongoose, permitiendo incorporar paginación, consultas avanzadas y una estructura de datos mucho más escalable.
 
----
+# ⚙️ Instalación y Configuración
 
-> 📌 **Continúa con la Parte 2**, donde se documentarán la instalación del proyecto, scripts disponibles, API REST, vistas HTTP, comunicación mediante Socket.IO y el funcionamiento interno de la aplicación.
-
-
-# 🚀 Instalación y ejecución
-
-## Requisitos previos
-
-Antes de ejecutar el proyecto es necesario tener instalado:
-
-- Node.js
-- npm (incluido con Node.js)
-- Git
-
----
-
-## Clonar el repositorio
+## 1. Clonar el repositorio
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 ```
 
-Ingresar al proyecto:
+Ingresar al directorio del proyecto:
 
 ```bash
-cd E-commerce-Lab
+cd <NOMBRE_DEL_PROYECTO>
 ```
 
 ---
 
-## Instalar dependencias
+## 2. Instalar dependencias
 
 ```bash
 npm install
@@ -278,61 +205,67 @@ npm install
 
 ---
 
-## Ejecutar el proyecto
+## 3. Configurar las variables de entorno
 
-Modo desarrollo
+El proyecto utiliza variables de entorno para proteger información sensible.
+
+Crear un archivo **.env** en la raíz del proyecto tomando como referencia el archivo **.env.example**.
+
+Ejemplo:
+
+```env
+PORT=3030
+MONGO_URI=TU_MONGO_URI
+```
+
+> **Importante:** Por motivos de seguridad, la URI real de MongoDB Atlas no se encuentra incluida en este repositorio.
+
+---
+
+## 4. Ejecutar el proyecto
+
+Modo desarrollo:
 
 ```bash
 npm run dev
 ```
 
-Modo producción
+Modo producción:
 
 ```bash
 npm start
 ```
 
-Una vez iniciado el servidor podrás acceder desde el navegador a:
+El servidor estará disponible en:
 
 ```text
-http://localhost:8080
+http://localhost:3030
 ```
 
-> *(Reemplazar el puerto si utilizás otro diferente.)*
+---
+
+# 🌱 Poblar la Base de Datos
+
+Para facilitar las pruebas del sistema se incluye un script que genera automáticamente productos de ejemplo.
+
+Ejecutar:
+
+```bash
+node src/scripts/seedProducts.js
+```
+
+El script:
+
+* Elimina los productos existentes.
+* Genera automáticamente productos de prueba.
+* Inserta los nuevos registros en MongoDB.
+* Asigna categorías, precios, stock e imágenes de ejemplo.
 
 ---
 
-# 📦 Dependencias principales
+# 📄 Vistas Implementadas
 
-| Dependencia | Función |
-|-------------|----------|
-| Express | Framework principal del servidor |
-| Express Handlebars | Renderizado de vistas |
-| Socket.IO | Comunicación en tiempo real |
-| Multer | Subida de imágenes |
-| Morgan | Registro de peticiones HTTP |
-| UUID | Generación de identificadores únicos |
-
----
-
-# 📜 Scripts disponibles
-
-| Script | Descripción |
-|----------|-------------|
-| `npm run dev` | Ejecuta la aplicación en modo desarrollo utilizando el watcher de Node.js. |
-| `npm start` | Ejecuta la aplicación en modo producción. |
-
----
-
-# 🌐 Interfaces de la aplicación
-
-La aplicación posee dos formas distintas de interactuar con el sistema.
-
-Ambas trabajan sobre la misma información, pero utilizando tecnologías diferentes.
-
----
-
-# 🖥️ Versión HTTP
+## 🏠 Home
 
 Ruta:
 
@@ -340,490 +273,251 @@ Ruta:
 /
 ```
 
-Esta vista representa el funcionamiento tradicional de una aplicación web utilizando renderizado del lado del servidor.
+Permite administrar los productos mediante formularios.
 
-Desde esta pantalla el usuario puede:
+Funciones disponibles:
 
-- Crear productos
-- Editar productos
-- Eliminar productos
-- Visualizar todos los productos
-- Subir imágenes
-- Recibir mensajes de validación
-- Navegar hacia la versión Live
+* Crear productos.
+* Editar productos.
+* Eliminar productos.
 
 ---
 
-### Funcionalidades implementadas
-
-✔ Alta de productos
-
-✔ Edición mediante formularios
-
-✔ Eliminación con confirmación mediante SweetAlert2
-
-✔ Renderizado dinámico con Handlebars
-
-✔ Carga física de imágenes mediante Multer
-
-✔ Validaciones mediante Middlewares
-
-✔ Manejo de errores con redirecciones controladas
-
----
-
-# ⚡ Versión Live
+## ⚡ RealTimeProducts
 
 Ruta:
 
 ```text
-/live
+/realtimeproducts
 ```
 
-Esta vista utiliza Socket.IO para mantener sincronizados todos los clientes conectados.
-
-Cada modificación realizada por un usuario se replica automáticamente en el resto de los clientes.
-
-No es necesario actualizar la página para visualizar los cambios.
+Permite visualizar los productos con actualización en tiempo real utilizando Socket.io.
 
 ---
 
-### Funcionalidades implementadas
+## 🛍️ Catálogo de Productos
 
-✔ Alta en tiempo real
-
-✔ Actualización en tiempo real
-
-✔ Eliminación en tiempo real
-
-✔ Sincronización automática
-
-✔ Comunicación Cliente ↔ Servidor
-
-✔ Confirmaciones mediante SweetAlert2
-
-✔ Validaciones antes de emitir eventos al servidor
-
----
-
-# 🔄 Flujo de funcionamiento
+Ruta:
 
 ```text
-Cliente
-
-      │
-
-      ▼
-
-Formulario
-
-      │
-
-      ▼
-
-Validación Frontend
-
-      │
-
-      ▼
-
-Express / Socket.IO
-
-      │
-
-      ▼
-
-Middlewares
-
-      │
-
-      ▼
-
-Controllers
-
-      │
-
-      ▼
-
-Services
-
-      │
-
-      ▼
-
-Managers
-
-      │
-
-      ▼
-
-JSON
+/products
 ```
 
-Cada capa tiene una responsabilidad específica, permitiendo mantener el proyecto organizado y desacoplado.
+Características:
+
+* Listado paginado.
+* Navegación entre páginas.
+* Filtro por categoría.
+* Filtro por estado.
+* Ordenamiento por precio.
+* Selección del límite de productos por página.
+* Acceso al detalle de cada producto.
 
 ---
 
-# 📡 API REST
+## 📦 Detalle del Producto
+
+Ruta:
+
+```text
+/products/:pid
+```
+
+Permite visualizar toda la información de un producto específico y agregarlo al carrito de compras.
+
+---
+
+## 🛒 Carrito de Compras
+
+Ruta:
+
+```text
+/cart
+```
+
+Funciones disponibles:
+
+* Visualizar productos agregados.
+* Calcular automáticamente el total de la compra.
+* Eliminar productos individuales.
+* Vaciar completamente el carrito.
+
+El carrito permanece asociado al usuario mediante una Cookie, evitando que sea necesario indicar el ID manualmente.
+
+---
+
+# 🔌 API REST
 
 ## Productos
 
-| Método | Endpoint | Descripción |
-|---------|----------|-------------|
-| GET | `/api/products` | Obtiene todos los productos. |
-| GET | `/api/products/:pid` | Obtiene un producto mediante su identificador. |
-| POST | `/api/products` | Crea un nuevo producto. |
-| PUT | `/api/products/:pid` | Actualiza un producto existente. |
-| DELETE | `/api/products/:pid` | Elimina un producto. |
+| Método | Endpoint            | Descripción                 |
+| ------ | ------------------- | --------------------------- |
+| GET    | `/api/products`     | Obtener todos los productos |
+| GET    | `/api/products/:id` | Obtener un producto por ID  |
+| POST   | `/api/products`     | Crear un producto           |
+| PUT    | `/api/products/:id` | Actualizar un producto      |
+| DELETE | `/api/products/:id` | Eliminar un producto        |
 
 ---
 
 ## Carritos
 
-| Método | Endpoint | Descripción |
-|---------|----------|-------------|
-| POST | `/api/carts` | Crea un carrito vacío. |
-| GET | `/api/carts/:cid` | Obtiene todos los productos del carrito. |
-| POST | `/api/carts/:cid/product/:pid` | Agrega un producto al carrito. Si el producto ya existe, incrementa automáticamente su cantidad. |
+| Método | Endpoint                                 | Descripción                    |
+| ------ | ---------------------------------------- | ------------------------------ |
+| POST   | `/api/carts`                             | Crear un carrito               |
+| GET    | `/api/carts/:id`                         | Obtener un carrito             |
+| POST   | `/api/carts/:cartId/products/:productId` | Agregar un producto al carrito |
 
 ---
 
-# 🛡️ Sistema de validaciones
+# 📊 Funcionalidades del Catálogo
 
-La aplicación implementa múltiples validaciones para garantizar la consistencia de la información antes de modificar los datos almacenados.
+El catálogo de productos permite combinar múltiples parámetros de búsqueda mediante Query Params.
 
-Entre ellas se encuentran:
+Ejemplos:
 
-- Validación de UUID.
-- Validación de campos obligatorios.
-- Validación de precio.
-- Validación de stock.
-- Validación de existencia del producto.
-- Validación de existencia del carrito.
-
-Cuando una validación falla en la versión HTTP:
-
-1. El middleware detecta el error.
-2. Redirecciona nuevamente hacia la vista principal.
-3. El controlador recupera el mensaje enviado mediante Query Params.
-4. Handlebars renderiza nuevamente la vista mostrando el mensaje de error.
-5. La lista de productos permanece visible evitando perder el contexto de trabajo.
-
-Este mecanismo evita responder con JSON cuando el usuario está interactuando desde una interfaz HTML, mejorando significativamente la experiencia de uso.
-
----
-
-# 📂 Persistencia de datos
-
-Actualmente el proyecto utiliza persistencia local mediante archivos JSON.
-
-Los datos son administrados por los Managers de la aplicación utilizando operaciones asincrónicas mediante:
-
-```javascript
-fs/promises
-```
-
-Archivos utilizados:
+Filtrar por categoría:
 
 ```text
-src/data/
-
-├── products.json
-└── carts.json
+/products?category=Ropa
 ```
 
-Cada operación de lectura y escritura es centralizada dentro de los Managers, evitando que otras capas accedan directamente a los archivos.
-
----
-
-# 🖼️ Gestión de imágenes
-
-La carga de imágenes se realiza mediante **Multer**.
-
-Las imágenes son almacenadas físicamente dentro del directorio:
+Filtrar por estado:
 
 ```text
-uploads/
+/products?status=true
 ```
 
-Posteriormente la información del archivo queda asociada al producto correspondiente para poder visualizarla desde ambas interfaces de la aplicación.
-
----
-
-> 📌 **Continúa con la Parte 3**, donde se documentarán las decisiones de arquitectura, las funcionalidades implementadas, las mejoras realizadas durante el desarrollo, las futuras ampliaciones del proyecto y la información del autor.
-
-
-
-# 🏗️ Decisiones de arquitectura
-
-Durante el desarrollo del proyecto se buscó aplicar buenas prácticas de organización y separación de responsabilidades para facilitar el mantenimiento y la escalabilidad del sistema.
-
-## Patrón MVC
-
-La aplicación está organizada siguiendo el patrón **Model - View - Controller**, permitiendo desacoplar la lógica de negocio de la interfaz y de las rutas.
-
-Cada capa posee una responsabilidad específica:
-
-| Capa | Responsabilidad |
-|-------|-----------------|
-| **Routes** | Define los endpoints y deriva las peticiones al controlador correspondiente. |
-| **Middlewares** | Realiza validaciones y verificaciones previas antes de ejecutar la lógica de negocio. |
-| **Controllers** | Recibe la petición, coordina la operación y genera la respuesta. |
-| **Services** | Contiene la lógica de negocio y actúa como intermediario entre Controllers y Managers. |
-| **Managers** | Se encargan exclusivamente del acceso y manipulación de los archivos JSON. |
-| **Views** | Renderizan la interfaz utilizando Express Handlebars. |
-| **Sockets** | Gestionan todos los eventos en tiempo real mediante Socket.IO. |
-
----
-
-# ⚙️ Flujo de una petición HTTP
+Ordenar por precio:
 
 ```text
-Cliente
-
-   │
-
-   ▼
-
-Routes
-
-   │
-
-   ▼
-
-Middlewares
-
-   │
-
-   ▼
-
-Controllers
-
-   │
-
-   ▼
-
-Services
-
-   │
-
-   ▼
-
-Managers
-
-   │
-
-   ▼
-
-JSON
+/products?sort=asc
 ```
 
-Este flujo permite mantener una correcta separación de responsabilidades y evita concentrar toda la lógica dentro de los controladores.
-
----
-
-# ⚡ Flujo de un evento Socket.IO
+Limitar cantidad de productos:
 
 ```text
-Cliente
-
-   │
-
-   ▼
-
-Socket Event
-
-   │
-
-   ▼
-
-Socket Controller
-
-   │
-
-   ▼
-
-Services
-
-   │
-
-   ▼
-
-Managers
-
-   │
-
-   ▼
-
-Persistencia
-
-   │
-
-   ▼
-
-Broadcast
-
-   │
-
-   ▼
-
-Clientes conectados
+/products?limit=5
 ```
 
-Gracias a este mecanismo todos los usuarios visualizan las modificaciones en tiempo real sin necesidad de actualizar el navegador.
-
----
-
-# 🎯 Funcionalidades implementadas
-
-## Gestión de productos
-
-- Crear productos.
-- Consultar productos.
-- Actualizar productos.
-- Eliminar productos.
-- Subir imágenes mediante Multer.
-- Validación completa de los datos recibidos.
-
----
-
-## Gestión de carritos
-
-- Crear carritos.
-- Obtener un carrito.
-- Agregar productos.
-- Incrementar automáticamente la cantidad cuando un producto ya existe dentro del carrito.
-
----
-
-## Comunicación en tiempo real
-
-- Alta de productos.
-- Eliminación de productos.
-- Actualización de productos.
-- Sincronización automática de clientes.
-- Eventos emitidos mediante Socket.IO.
-
----
-
-## Interfaz Web
-
-- Navegación entre versión HTTP y versión Live.
-- Formularios dinámicos.
-- Edición desde la misma tarjeta del producto.
-- Confirmaciones mediante SweetAlert2.
-- Mensajes de error amigables.
-- Diseño visual unificado.
-
----
-
-# 🛡️ Manejo de errores
-
-El proyecto implementa un sistema de validaciones distribuido entre el cliente y el servidor.
-
-### Validaciones del lado del cliente
-
-- Verificación de precio.
-- Verificación de stock.
-- Confirmaciones de eliminación.
-- Alertas mediante SweetAlert2.
-
----
-
-### Validaciones del lado del servidor
-
-- Validación de UUID.
-- Validación de datos obligatorios.
-- Validación de existencia del producto.
-- Validación de existencia del carrito.
-- Validación de tipos de datos.
-
----
-
-### Manejo de errores HTTP
-
-Cuando una validación falla durante una petición tradicional:
-
-- El middleware intercepta el error.
-- Se realiza una redirección hacia la vista principal.
-- El mensaje viaja mediante Query Params.
-- El controlador renderiza nuevamente la página.
-- La vista muestra el mensaje correspondiente sin perder la información previamente cargada.
-
-Este mecanismo mejora la experiencia del usuario evitando respuestas JSON cuando se trabaja desde una interfaz HTML.
-
----
-
-# 💡 Principios aplicados durante el desarrollo
-
-Durante la construcción del proyecto se aplicaron distintos principios para mantener un código limpio y fácil de mantener.
-
-- Separación de responsabilidades.
-- Modularización.
-- Reutilización de código.
-- Organización por capas.
-- Validaciones centralizadas.
-- Comunicación desacoplada.
-- Código reutilizable.
-- Escalabilidad.
-
----
-
-# 🚀 Posibles mejoras futuras
-
-El proyecto fue diseñado de manera modular para facilitar la incorporación de nuevas funcionalidades.
-
-Algunas mejoras posibles son:
-
-- Implementar una base de datos MongoDB.
-- Incorporar Mongoose como ODM.
-- Agregar autenticación mediante JWT.
-- Sistema de usuarios y roles.
-- Panel de administración.
-- Paginación de productos.
-- Búsqueda avanzada y filtros.
-- Variables de entorno mediante dotenv.
-- Dockerización de la aplicación.
-- Testing automatizado.
-- Despliegue en la nube.
-
----
-
-# 📸 Capturas de la aplicación
-
-Se recomienda agregar imágenes de ambas interfaces para mostrar el funcionamiento del proyecto.
-
-Ejemplo de estructura:
+Ir a una página específica:
 
 ```text
-README/
-
-├── home.png
-├── live.png
-└── architecture.png
+/products?page=2
 ```
 
-Luego pueden mostrarse utilizando Markdown:
+Los filtros pueden combinarse entre sí, permitiendo realizar consultas más específicas.
 
-```md
-## Vista HTTP
+Ejemplo:
 
-![Home](./README/home.png)
-
----
-
-## Vista Live
-
-![Live](./README/live.png)
+```text
+/products?category=Ropa&status=true&sort=asc&limit=5&page=2
 ```
 
 ---
 
-# 📄 Licencia
+# 🧪 Validaciones Implementadas
 
-Este proyecto fue desarrollado con fines educativos como parte de la Diplomatura en Desarrollo Backend.
+El proyecto incorpora diferentes validaciones para garantizar la integridad de los datos.
 
-Su código puede utilizarse como referencia para fines de aprendizaje.
+Entre ellas:
+
+* Validación de IDs de MongoDB.
+* Validación de productos antes de su creación.
+* Validación de actualización parcial de productos.
+* Manejo centralizado de errores.
+* Verificación de existencia de productos y carritos antes de realizar operaciones.
+* Respuestas HTTP adecuadas según cada caso de error.
+
+# 🧠 Decisiones de Diseño
+
+Durante el desarrollo del proyecto se tomaron diversas decisiones con el objetivo de construir una aplicación escalable, mantenible y fácil de extender.
+
+### Arquitectura Modular
+
+El proyecto fue organizado separando responsabilidades en distintas capas:
+
+* **Routes:** Definición de endpoints.
+* **Controllers:** Recepción de las peticiones HTTP y envío de respuestas.
+* **Managers:** Implementación de la lógica de negocio y acceso a la base de datos.
+* **Models:** Definición de los esquemas mediante Mongoose.
+* **Services:** Encapsulación de procesos reutilizables.
+* **Middlewares:** Validaciones y procesamiento previo de las solicitudes.
+* **Config:** Configuración centralizada del proyecto.
+
+Esta estructura facilita el mantenimiento del código y permite incorporar nuevas funcionalidades sin afectar el resto de la aplicación.
+
+---
+
+# 🔒 Seguridad
+
+Para proteger información sensible se implementaron buenas prácticas como:
+
+* Uso de variables de entorno mediante **dotenv**.
+* Exclusión del archivo `.env` del repositorio mediante `.gitignore`.
+* Archivo `.env.example` para facilitar la configuración del proyecto.
+* Validación de datos recibidos antes de realizar operaciones sobre la base de datos.
+* Manejo controlado de errores mediante bloques `try/catch`.
+
+---
+
+# 🚀 Funcionalidades Implementadas
+
+## Gestión de Productos
+
+* Crear productos.
+* Obtener todos los productos.
+* Obtener un producto por ID.
+* Actualizar productos.
+* Eliminar productos.
+* Subida de imágenes mediante Multer.
+
+## Gestión de Carritos
+
+* Creación automática del carrito al agregar el primer producto.
+* Asociación del carrito al usuario mediante Cookies.
+* Agregar productos.
+* Incrementar automáticamente la cantidad de un producto existente.
+* Eliminar productos individuales.
+* Vaciar completamente el carrito.
+* Cálculo automático del total de la compra.
+
+## Catálogo
+
+* Paginación.
+* Filtros por categoría.
+* Filtros por estado.
+* Ordenamiento por precio.
+* Límite de productos por página.
+* Conservación de filtros al navegar entre páginas.
+
+## Vistas
+
+* Home.
+* RealTimeProducts.
+* Catálogo de Productos.
+* Detalle de Producto.
+* Carrito de Compras.
+
+---
+
+# 📈 Mejoras Futuras
+
+Algunas funcionalidades que podrían incorporarse en futuras versiones son:
+
+* Implementación de autenticación con JWT.
+* Registro e inicio de sesión de usuarios.
+* Asociación de un carrito por usuario autenticado.
+* Roles de usuario (Administrador y Cliente).
+* Panel de administración para gestión completa del catálogo.
+* Búsqueda por nombre del producto.
+* Recuperación de contraseña.
+* Integración con pasarelas de pago (Stripe, Mercado Pago, etc.).
+* Historial de compras.
+* Sistema de favoritos.
+* Validación de stock en tiempo real.
+* Tests automatizados.
+* Documentación de la API mediante Swagger.
 
 ---
 
@@ -831,20 +525,30 @@ Su código puede utilizarse como referencia para fines de aprendizaje.
 
 **Emiliano Fioquetti**
 
-Proyecto desarrollado para la **Diplomatura en Desarrollo Backend** utilizando Node.js, Express y Socket.IO.
+Proyecto desarrollado como entrega del curso de **Backend** utilizando Node.js, Express.js, MongoDB Atlas y Handlebars.
 
 ---
 
-# 🙌 Agradecimientos
+# 🙏 Agradecimientos
 
-A los docentes y tutores de la diplomatura por el acompañamiento durante el desarrollo del proyecto y a la comunidad de Node.js por la documentación y herramientas que hicieron posible su implementación.
+Quiero agradecer al profesor y a los tutores por el acompañamiento brindado durante el desarrollo del curso.
+
+Sus explicaciones, correcciones y sugerencias fueron fundamentales para comprender conceptos clave del desarrollo Backend y mejorar continuamente este proyecto.
+
+Asimismo, agradezco a todos mis compañeros por compartir experiencias, resolver dudas y contribuir a generar un excelente ambiente de aprendizaje.
 
 ---
 
-<div align="center">
+# ⭐ Estado del Proyecto
 
-### ⭐ Gracias por visitar este proyecto.
+✅ Proyecto Finalizado
 
-Si este repositorio te resultó útil o interesante, no olvides dejar una ⭐.
+La aplicación cumple con los requisitos solicitados para la entrega e incorpora funcionalidades adicionales que mejoran la experiencia del usuario y la organización del código, aplicando una arquitectura modular y buenas prácticas de desarrollo.
 
-</div>
+---
+
+## 📬 Contacto
+
+En caso de consultas o sugerencias sobre el proyecto, no dudes en comunicarte a través de GitHub.
+
+Si este proyecto te resultó útil o interesante, ¡no olvides dejar una ⭐ en el repositorio!
