@@ -34,7 +34,7 @@ class ProductManager {
     }
 
     async getProductById(id) {
-        const product = await ProductModel.findById(id)
+        const product = await ProductModel.findById(id).lean()
 
         if (!product) {
             throw new Error('Producto no encontrado');

@@ -13,6 +13,7 @@ const setupHandlebars = require('./config/hbs.config');
 const { corsMiddleware } = require('./config/cors.config');
 const { init: initSocket } = require('./config/socket.io');
 const setupProductSocket = require('./sockets/product.socket');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(dev);
 app.use(corsMiddleware);
+app.use(cookieParser());
 
 // 2. Configuración del motor de vistas
 setupHandlebars(app);

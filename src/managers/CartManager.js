@@ -8,7 +8,7 @@ class CartManager {
 
 
     async getCartById(id){
-        const cart = await CartModel.findById(id).populate('products.product')
+        const cart = await CartModel.findById(id).populate('products.product').lean()
 
         if(!cart){
             throw new Error('Carrito no encontrado');

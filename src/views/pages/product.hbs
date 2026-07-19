@@ -1,1 +1,72 @@
-<p>{{product.title}}</p>
+<div class="container">
+
+    <h1>{{product.title}}</h1>
+    <h2>Detalle del producto</h2>
+
+    <div class="product-card">
+
+       
+        <div class="product-images">
+            {{#each product.thumbnails}}
+                <img
+                    src="{{this}}"
+                    alt="Imagen de {{../product.title}}"
+                >
+            {{/each}}
+        </div>
+
+  
+        <h1>{{product.title}}</h1>
+        <h2>Categoría: {{product.category}}</h2>
+
+        <p>
+            <strong>Descripción:</strong><br>
+            {{product.description}}
+        </p>
+
+        <p>
+            <strong>Código:</strong>
+            {{product.code}}
+        </p>
+
+        <p>
+            <strong>Precio:</strong>
+            <span style="color: #00E5FF; font-weight: bold; font-size: 1.3rem;">$ {{product.price}}</span>
+        </p>
+
+        <p>
+            <strong>Stock:</strong>
+            {{product.stock}} unidades
+        </p>
+
+        <p>
+            <strong>Estado:</strong>
+            {{#if product.status}}
+                <span style="color: #00E5FF; font-weight: bold;">Disponible</span>
+            {{else}}
+                <span style="color: #FF3366; font-weight: bold;">No disponible</span>
+            {{/if}}
+        </p>
+
+        
+        <div class="actions">
+
+            <form action="/products/{{product._id}}/add-to-cart" method="POST" style="flex: 1;">
+                
+                <button type="submit" class="btn-enable-edit" style="width: 100%;">
+                    Agregar al carrito
+                </button>
+            </form>
+
+            <a
+                class="nav-link live-btn"
+                href="/products"
+            >
+                Volver al catálogo
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

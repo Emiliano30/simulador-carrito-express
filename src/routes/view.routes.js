@@ -6,7 +6,13 @@ const {
     updateProduct,
     renderProducts,
     renderProductDetail,
-    renderCart} = require('../controllers/view.controller');
+    renderCart,
+    deleteCart,
+    addToCart,
+    renderCurrentCart,
+    deleteProductFromCart
+} = require('../controllers/view.controller');
+
 const {validateProduct, validateId, validateUpdateProduct} = require('../middlewares/middleware')
 const {upload} = require('../config/multer');
 
@@ -27,6 +33,10 @@ router.get('/realtimeproducts', (req,res) => {
 //Entrega Final
 router.get('/products',renderProducts);
 router.get('/products/:pid',validateId('pid'),renderProductDetail);
-router.get('/carts/:cid',validateId('cid'),renderCart)
+router.post('/products/:pid/add-to-cart',validateId('pid'),addToCart)
+router.get('/carts/:cid',validateId('cid'),renderCart);
+router.get('/cart',renderCurrentCart)
+router.post('/carts/:cid/clear',validateId('cid'),deleteCart);
+router.post('/cart/products/:pid/delete',validateId('pid'),deleteProductFromCart)
 
 module.exports = {viewsRouter: router};

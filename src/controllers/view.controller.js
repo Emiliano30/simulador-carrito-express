@@ -1,4 +1,5 @@
 const {productManager} = require('../managers/ProductManager');
+const {cartManager} = require('../managers/CartManager')
 const { createProductFromRequest } = require('../services/productService');
 const { buildPaginationLinks } = require('../utils/paginationLinks');
 
@@ -54,6 +55,59 @@ async function updateProduct(req, res) {
     }
 }
 
+async function deleteCart(req,res){
+    try {
+        const {cid} = req.params;
+        await cartManager.clearCart(cid)
+        return res.redirect(`/carts/${cid}`)
+    } catch (error) {
+        if(error.message === 'Carrito no encontrado'){
+            return res.status(404).render('pages/error', {
+                message:error.message
+            })
+        }
+
+        res.status(500).json({
+            error:error.message
+        })
+    }
+}
+
+async function addToCart(req,res){
+    try {
+        let cid = req.cookies.cid;
+        if(!cid){
+            const newCart = await cartManager.addCart();
+            cid = newCart._id;
+            res.cookie(
+                'cid',
+                cid,
+                {
+                    maxAge:1000*60*60*24*7
+                });
+        };
+
+        await cartManager.addProductToCart(cid,req.params.pid);
+        return res.redirect('/products')
+    } catch (error) {
+        if(error.message === 'Carrito no encontrado'){
+            return res.status(404).render('pages/error', {
+                message:error.message
+            })
+        }
+
+        if(error.message === 'Producto no encontrado'){
+            return res.status(404).render('pages/error', {
+                message:error.message
+            })
+        }
+
+        res.status(500).json({
+            error:error.message
+        })
+    }
+}
+
 async function renderProducts(req,res){
     try {
         const {limit,page,category,status,sort} = req.query;
@@ -93,7 +147,7 @@ async function renderProducts(req,res){
 async function renderProductDetail(req,res){
     try {
         const product = await productManager.getProductById(req.params.pid);
-        return res.status(200).render('pages/product',{product:product.toObject()})
+        return res.status(200).render('pages/product',{product})
     } catch (error) {
         if(error.message === 'Producto no encontrado'){
             return res.status(404).render('pages/error', {
@@ -107,9 +161,81 @@ async function renderProductDetail(req,res){
     }
 };
 
+async function renderCurrentCart(req,res){
+    const cid = req.cookies.cid;
+    if(!cid){
+        return res.render('pages/error',{
+            message:'Todavia no tiene un carrito'
+        })
+    }
 
-async function renderCart(res,res){
-    res.send('vista carrito')
+    return res.redirect(`/carts/${cid}`)
+}
+
+async function renderCart(req,res){
+    try {
+        const {cid} = req.params;
+
+        const cart = await cartManager.getCartById(cid);
+   
+        const total = cart.products.reduce((acc,item)=> {
+            return acc + (item.product.price * item.quantity)
+        },0);
+
+        return res.status(200).render('pages/cart',{cart,total})
+    } catch (error) {
+        if(error.message === 'Carrito no encontrado'){
+            return res.status(404).render('pages/error', {
+                message:error.message
+            })
+        }
+
+        res.status(500).json({
+            error:error.message
+        })
+    }
 };
 
-module.exports = {getProducts, addProduct, deleteProduct, updateProduct, renderProducts, renderProductDetail, renderCart};
+async function deleteProductFromCart(req,res){
+    try {
+        const cid = req.cookies.cid;
+
+        if(!cid){
+            return res.status(400).render('pages/error',{
+                message: 'No existe un carrito activo'
+            })
+        }
+        await cartManager.deleteProductFromCart(cid,req.params.pid);
+        return res.redirect(`/carts/${cid}`)
+    } catch (error) {
+        if(error.message === 'Carrito no encontrado'){
+            return res.status(404).render('pages/error', {
+                message:error.message
+            })
+        }
+
+        if(error.message === 'El producto no existe en el carrito'){
+            return res.status(404).render('pages/error',{
+                message:error.message
+            })
+        }
+
+        res.status(500).json({
+            error:error.message
+        })
+    }
+}
+
+module.exports = {
+    getProducts,
+    addProduct, 
+    deleteProduct, 
+    updateProduct, 
+    renderProducts, 
+    renderProductDetail, 
+    renderCart,
+    deleteCart,
+    addToCart,
+    renderCurrentCart,
+    deleteProductFromCart
+};

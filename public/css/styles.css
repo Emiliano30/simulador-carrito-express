@@ -355,3 +355,14 @@ select:focus{
     flex:1;
     text-align:center;
 }
+
+.actions .nav-link{
+    flex:1;
+    text-align:center;
+}
+
+.actions a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
